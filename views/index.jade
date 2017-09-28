@@ -10,9 +10,10 @@ block content
     li content
     li votes
     li created_at
+    li image_url
   ul
     li GET http://localhost:9001/posts gets all posts
-    li POST http://localhost:9001/posts creates a new post Requires data {content: "somecontent", author: "somename", title: "sometitle"}
+    li POST http://localhost:9001/posts creates a new post Requires data {content: "somecontent", author: "somename", title: "sometitle", (optionally) image_url: "linktoimagehere"}
     li POST http://localhost:9001/posts/:id edits a current post Requires data {content: "somecontent"}
     li POST http://localhost:9001/posts/:id/upvote edits the post to increase its votes by 1
     li POST http://localhost:9001/posts/:id/downvote edits the post to decrease its votes by 1
