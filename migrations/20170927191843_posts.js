@@ -5,6 +5,8 @@ exports.up = function(knex, Promise) {
     table.string('author');
     table.string('title');
     table.text('content');
+    table.integer('votes').default(0);
+    table.timestamp('created_at').default(knex.fn.now());
   });
 };
 

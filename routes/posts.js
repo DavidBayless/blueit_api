@@ -23,6 +23,26 @@ router.post('/:id', (req, res, next) => {
   })
 })
 
+router.post('/:id/downvote', (req, res, next) => {
+  knex('posts').where('id', req.params.id).select().then((data) => {
+    knex('posts').where('id', req.params.id).update({votes: data[0].votes - 1}).returning('*').then(response => {
+      let updated = data[0];
+      updated.votes--;
+      res.json([updated])
+    })
+  })
+})
+
+router.post('/:id/upvote', (req, res, next) => {
+  knex('posts').where('id', req.params.id).select().then((data) => {
+    knex('posts').where('id', req.params.id).update({votes: data[0].votes + 1}).returning('*').then(response => {
+      let updated = data[0];
+      updated.votes++;
+      res.json([updated])
+    })
+  })
+})
+
 router.post('/:id/delete', (req, res, next) => {
   knex('posts').where('id', req.params.id).del()
   .then(data => {

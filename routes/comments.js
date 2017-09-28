@@ -11,13 +11,13 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/:id', (req, res, next) => {
-  knex('comments').insert({author: req.body.author, content: req.body.content, comment_id: null, post_id: req.params.id}).returning('*').then(data => {
+  knex('comments').insert({content: req.body.content, comment_id: null, post_id: req.params.id}).returning('*').then(data => {
     res.json(data.rows)
   })
 })
 
 router.post('/:id/reply', (req, res, next) => {
-  knex('comments').insert({author: req.body.author, content: req.body.content, comment_id: req.params.id, post_id: null}).returning('*').then(data => {
+  knex('comments').insert({content: req.body.content, comment_id: req.params.id, post_id: null}).returning('*').then(data => {
     res.json(data.rows)
   })
 })
