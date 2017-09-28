@@ -1,0 +1,17 @@
+extends layout
+
+block content
+  h1 Blueit_API Mini-Docs
+  h3 Posts
+  ul
+    li GET http://localhost:9001/posts gets all posts
+    li POST http://localhost:9001/posts creates a new post
+    li POST http://localhost:9001/posts/:id edits a current post
+    li POST http://localhost:9001/posts/:id/delete deletes a post
+  h3 comments
+  ul
+    li GET http://localhost:9001/comments gets all comments
+    li POST http://localhost:9001/comments/:id/edit edits a comment
+    li POST http://localhost:9001/comments/:id creates a new comment in response to a post
+    li POST http://localhost:9001/comments/:id/reply creates a new comment in response to a comment
+    li POST http://localhost:9001/comments/:id/delete deletes a comment
