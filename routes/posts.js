@@ -11,7 +11,9 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', (req, res, next) => {
-  knex.raw(`INSERT INTO posts(author, title, content) values ('${req.body.author}', '${req.body.title}', '${req.body.content}') returning *`)
+  let {image_url, author, title, content} = req.body;
+  image_url = image_url || "http://store-nz.monsroyale.com/c.3934103/app-nz/img/no_image_available.jpeg?resizeid=3&resizeh=1000&resizew=1000";
+  knex.raw(`INSERT INTO posts(author, title, content, image_url) values ('${author}', '${title}', '${content}', '${image_url}') returning *`)
   .then(data => {
     res.json(data.rows)
   })
